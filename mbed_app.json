@@ -1,0 +1,10 @@
+{
+    "target_overrides": {
+        "*": {
+            "platform.error-filename-capture-enabled": true,
+            "platform.stdio-convert-newlines": true,
+            "platform.stdio-baud-rate": 115200
+        }
+        
+    }
+}
