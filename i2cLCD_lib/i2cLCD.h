@@ -27,6 +27,8 @@
 /************** Command Byte Codes ******/
 // See  http://www.dinceraydin.com/lcd/commands.html for HD44780 CMDs
 
+class i2cLCD {
+    
 
 
 #define LCD_LINE1 0x80
@@ -88,32 +90,36 @@
 #define CMD_BYTE_OFF 0x00 // enable=0 and rs =0 1000 YYYY-X-en-X-rs 
 
 /************* Function prototypes *******************/
-void lcd_send_cmd (unsigned char data);
-void lcd_send_data (unsigned char data);
-void lcd_clear (void);
-void lcd_init (void);
-void lcd_begin(uint8_t cols = 16, uint8_t rows = 2);
-void lcd_set_ncol_nrow(uint8_t, uint8_t);
-void lcd_send_string (char *str);
-void lcd_locate(uint8_t, uint8_t);
-void lcd_noDisplay(void);
-void lcd_display(void);
-void lcd_noBlink(void);
-void lcd_blink(void);
-void lcd_noCursor(void);
-void lcd_cursor(void);
-void lcd_scrollDisplayLeft(void);
-void lcd_scrollDisplayRight(void);
-void lcd_printLeft(void);
-void lcd_printRight(void);
-void lcd_leftToRight(void);
-void lcd_rightToLeft(void);
-void lcd_shiftIncrement(void);
-void lcd_shiftDecrement(void);
-void lcd_noBacklight(void);
-void lcd_backlight(void);
-void lcd_autoscroll(void);
-void lcd_noAutoscroll(void); 
-void lcd_createChar(char, char *);
-
+    public:
+i2cLCD(uint8_t lcd_Addr,uint8_t lcd_cols,uint8_t lcd_rows);
+void begin(uint8_t cols = 16, uint8_t rows = 2);
+void clear (void);
+void locate(uint8_t col, uint8_t row);
+void set_ncol_nrow(uint8_t col, uint8_t row);
+void printString (char *str);
+void printChar( char );
+void noDisplay(void);
+void display(void);
+void noBlink(void);
+void blink(void);
+void noCursor(void);
+void cursor(void);
+void scrollDisplayLeft(void);
+void scrollDisplayRight(void);
+void printLeft(void);
+void printRight(void);
+void leftToRight(void);
+void rightToLeft(void);
+void shiftIncrement(void);
+void shiftDecrement(void);
+void noBacklight(void);
+void backlight(void);
+void autoscroll(void);
+void noAutoscroll(void); 
+void createChar(char, char *);
+private:
+void send_cmd (unsigned char data);
+void send_data (unsigned char data);
+void init (void);
+};
 #endif
