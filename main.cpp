@@ -70,7 +70,7 @@ int main() {
   lcd_send_string((char *)"Display On!");
   ThisThread::sleep_for(10s);
   lcd_clear();
-  printf("Custom Chars");
+  printf("Custom Chars\r\n");
   char backslash[8] = {
       // \ backslash is not a standard character for lcd
       0b00000, 
@@ -83,10 +83,11 @@ int main() {
   };
   lcd_createChar(0, backslash);
   lcd_clear();
-    lcd_send_string((char *) "Custom Chars");
-    lcd_locate(0,1);
-    lcd_send_data( 0 );
-    sprintf(count, " is not std");
-  lcd_send_string(count);
-
+  lcd_send_string((char *) "Custom Chars");
+  lcd_locate(0,1);
+  lcd_send_data( 0 );
+  lcd_send_string((char *)" is not std");
+  ThisThread::sleep_for(1s);
+  printf("complete\r\n\n");
+  fflush(stdout);
 }
