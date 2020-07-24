@@ -114,6 +114,6 @@ void lcd_noBacklight(void);
 void lcd_backlight(void);
 void lcd_autoscroll(void);
 void lcd_noAutoscroll(void); 
-void lcd_createChar(uint8_t, uint8_t[]);
+void lcd_createChar(char, char *);
 
 #endif

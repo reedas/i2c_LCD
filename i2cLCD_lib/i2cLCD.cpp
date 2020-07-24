@@ -164,7 +164,7 @@ void lcd_noAutoscroll(void){
     _displaymode &= ~LCD_ENTRYSHIFTINCREMENT;
 	lcd_send_cmd(ENTRYMODESET | _displaymode);
 } 
-void lcd_createChar(uint8_t location, uint8_t charmap[]){
+void lcd_createChar(char location, char *charmap){
     location &= 0x7; // we only have 8 locations 0-7
 	lcd_send_cmd(SETCGRAMADDR | (location << 3));
 	for (int i=0; i<8; i++) {
